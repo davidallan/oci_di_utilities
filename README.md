@@ -78,3 +78,6 @@ allow any-user to use ons-topics in compartment yourcompartment where ALL {reque
 allow any-user to manage dataflow-run in compartment yourcompartment where ALL {request.principal.type = 'disworkspace'}
 ```
 
+### Generic REST executor
+
+Whatever permissions are needed for the service you use you will need to add just like above using resource principal.
