@@ -42,7 +42,7 @@
         "parentRef": {
           "parent": "14154173-021f-4f6b-92f8-0757e8543a45"
         },
-        "javaTypeName": "com.oracle.dicom.model.dataformat.JsonText",
+        "javaTypeName": "com.oracle.dicom.model.dataformat.JsonText"
       },
       "configValues": {
         "configParamValues": {
