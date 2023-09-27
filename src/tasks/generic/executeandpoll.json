@@ -1,13 +1,17 @@
 {
   "modelType": "REST_TASK",
+  "key": "6383389d-e053-4efd-aecb-71de170031ba",
   "name": "Execute OCI POST API and Poll",
   "description": "Execute a POST REST API. This fits a very specific OCI pattern for REST calls. One thing to note, is that the attribute used in the poll is hard-wired right now as the attribute id in the response.",
   "objectVersion": 9,
   "identifier": "EXECUTE_OCI_POST_API_AND_POLL",
-  "configProviderDelegate": {},
   "parameters": [
     {
       "modelType": "PARAMETER",
+      "key": "e8ff9732-2a50-4dc8-8669-e21550d809e5",
+      "parentRef": {
+        "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+      },
       "type": "Seeded:/typeSystems/PLATFORM/dataTypes/STRING",
       "configValues": {
         "configParamValues": {
@@ -29,15 +33,25 @@
     {
       "modelType": "PARAMETER",
       "key": "14154173-021f-4f6b-92f8-0757e8543a45",
+      "parentRef": {
+        "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+      },
       "type": {
         "modelType": "JAVA_TYPE",
-        "javaTypeName": "com.oracle.dicom.model.dataformat.JsonText"
+        "key": "b5939c37-86a7-4687-b231-9512aa6eed70",
+        "parentRef": {
+          "parent": "14154173-021f-4f6b-92f8-0757e8543a45"
+        },
+        "javaTypeName": "com.oracle.dicom.model.dataformat.JsonText",
       },
       "configValues": {
         "configParamValues": {
           "usedInParam": {
             "stringValue": "Execute API Config: (Request Payload)"
           }
+        },
+        "parentRef": {
+          "parent": "14154173-021f-4f6b-92f8-0757e8543a45"
         }
       },
       "description": "POST API Request Body",
@@ -46,12 +60,27 @@
       "name": "REQUEST_BODY",
       "rootObjectDefaultValue": {
         "modelType": "JSON_TEXT",
-        "encoded": false
+        "key": "7010a758-e1e6-4ee4-b081-75744069bc2a",
+        "parentRef": {
+          "parent": "14154173-021f-4f6b-92f8-0757e8543a45"
+        },
+        "encoded": false,
+        "configValues": {
+          "configParamValues": {
+            "dataParam": {
+              "stringValue": "{}"
+            }
+          }
+        }
       },
       "typeName": "com.oracle.dicom.model.dataformat.JsonText"
     },
     {
       "modelType": "PARAMETER",
+      "key": "60c01c60-d9c2-4ba5-92d8-4560b12812e9",
+      "parentRef": {
+        "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+      },
       "type": "Seeded:/typeSystems/PLATFORM/dataTypes/STRING",
       "configValues": {
         "configParamValues": {
@@ -73,8 +102,15 @@
     {
       "modelType": "PARAMETER",
       "key": "e9000971-ce45-4423-874f-719293fe41c4",
+      "parentRef": {
+        "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+      },
       "type": {
         "modelType": "JAVA_TYPE",
+        "key": "9e655dc1-8525-4e50-8ed0-2db75681e473",
+        "parentRef": {
+          "parent": "e9000971-ce45-4423-874f-719293fe41c4"
+        },
         "javaTypeName": "com.oracle.dicom.model.expression.Expression"
       },
       "configValues": {
@@ -82,6 +118,9 @@
           "usedInParam": {
             "stringValue": "Success Condition"
           }
+        },
+        "parentRef": {
+          "parent": "e9000971-ce45-4423-874f-719293fe41c4"
         }
       },
       "description": "",
@@ -94,8 +133,15 @@
     {
       "modelType": "PARAMETER",
       "key": "5088c60a-f85c-4741-94e5-5edf8bb4f9a5",
+      "parentRef": {
+        "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+      },
       "type": {
         "modelType": "JAVA_TYPE",
+        "key": "9e655dc1-8525-4e50-8ed0-2db75681e473",
+        "parentRef": {
+          "parent": "e9000971-ce45-4423-874f-719293fe41c4"
+        },
         "javaTypeName": "com.oracle.dicom.model.expression.Expression"
       },
       "description": "",
@@ -111,10 +157,15 @@
       "successCondition": {
         "parameterValue": "e9000971-ce45-4423-874f-719293fe41c4"
       }
-    }
+    },
+    "parentRef": {}
   },
   "executeRestCallConfig": {
     "modelType": "REST_CALL_CONFIG",
+    "key": "7b2af7c3-ca47-4724-ae6c-a20cf978d70f",
+    "parentRef": {
+      "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+    },
     "methodType": "POST",
     "requestHeaders": {
       "Content-Type": "application/json"
@@ -136,8 +187,11 @@
   },
   "pollRestCallConfig": {
     "modelType": "POLL_REST_CALL_CONFIG",
+    "key": "3aa07d65-0ace-43ff-a59a-56e7bf0055fa",
+    "parentRef": {
+      "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+    },
     "methodType": "GET",
-    "requestHeaders": {},
     "configValues": {
       "configParamValues": {
         "pollMaxDuration": {
@@ -158,12 +212,16 @@
         "pollCondition": {
           "parameterValue": "5088c60a-f85c-4741-94e5-5edf8bb4f9a5"
         }
-      },
+      }
     }
   },
   "typedExpressions": [
     {
       "modelType": "TYPED_EXPRESSION",
+      "key": "58565f8f-871a-4e75-ba69-ca1b30a9cfd6",
+      "parentRef": {
+        "parent": "6383389d-e053-4efd-aecb-71de170031ba"
+      },
       "type": "Seeded:/typeSystems/PLATFORM/dataTypes/VARCHAR",
       "configValues": {
         "configParamValues": {
@@ -181,7 +239,7 @@
     "modelType": "OCI_RESOURCE_AUTH_CONFIG",
     "resourcePrincipalSource": "WORKSPACE"
   },
-  "metadata": {
+  "registryMetadata": {
     "aggregatorKey": "{{PROJECT_KEY}}"
-  }
+  }     
 }
