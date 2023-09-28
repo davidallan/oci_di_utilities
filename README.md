@@ -11,8 +11,11 @@ export WORKSPACE_ID=
 export REGION=us-ashburn-1
 ```
 
-## Install
+## Install via Script and OCI CLI
 install.sh
+
+## Install via Python and OCI Python SDK
+python3 install.py workspaceid prokectkey us-ashburn-1
 
 ## Permissions
 
