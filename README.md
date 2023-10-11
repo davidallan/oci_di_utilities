@@ -23,7 +23,8 @@ The theme for all of these permissions is to allow the disworkspace resource per
 
 ### Compute tasks
 ```
-allow any-user to manage compute-container-family in compartment yourcompartment where ALL {request.principal.type = 'disworkspace'}
+allow any-user to manage instance-agent-command-family in compartment <compartment-name> where ALL {request.principal.type='disworkspace’,request.principal.id='<workspace_ocid>’}
+allow any-user to manage instance-agent-command-execution-family in compartment <compartment-name> where ALL {request.principal.type='disworkspace’,request.principal.id='<workspace_ocid>’}
 ```
 
 ### Container Instance tasks
