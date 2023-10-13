@@ -21,7 +21,7 @@ python3 install.py workspaceid prokectkey us-ashburn-1
 
 The theme for all of these permissions is to allow the disworkspace resource permission to perform the APIs concerned. The tasks have been defined using workspace resource BUT REST tasks can be defined to use workspace or application resource, application resource will give a tighter control. The example permissions can be further refined for example the specific operation can be added.
 
-### Compute tasks
+### Cloud Agent (OCI Compute) tasks
 ```
 allow any-user to manage instance-agent-command-family in compartment <compartment-name> where ALL {request.principal.type='disworkspace’,request.principal.id='<workspace_ocid>’}
 allow any-user to manage instance-agent-command-execution-family in compartment <compartment-name> where ALL {request.principal.type='disworkspace’,request.principal.id='<workspace_ocid>’}
