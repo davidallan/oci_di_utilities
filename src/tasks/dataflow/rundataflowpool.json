@@ -1,8 +1,7 @@
 {
     "modelType": "REST_TASK",
-    "name": "Execute OCI Dataflow Job",
-    "description": "REST task for OCI Dataflow, decide how much or little you want to parameterize and how, also pick up latest and greatest features.",
-    "identifier": "EXECUTE_OCI_DATAFLOW_JOB",
+    "name": "Execute OCI Dataflow Job With Pool",
+    "identifier": "EXECUTE_OCI_DATAFLOW_JOB_WITH_POOL",
     "parameters": [
         {
             "modelType": "PARAMETER",
@@ -13,7 +12,7 @@
                         "intValue": 255
                     },
                     "usedInParam": {
-                        "stringValue": "Execute API Config: (Request URL),Polling API Config: (Request URL), Execute API Config: (Request URL),Termination API Config: (Request URL)"
+                        "stringValue": "Execute API Config: (Request URL),Polling API Config: (Request URL), Execute API Config: (Request URL),Termination API Config: (Request URL),Polling API Config: (Request URL)"
                     }
                 }
             },
@@ -318,6 +317,26 @@
             "defaultValue": " ",
             "isInput": true,
             "isOutput": false,
+            "name": "POOL_ID",
+            "typeName": "VARCHAR"
+        },
+        {
+            "modelType": "PARAMETER",
+            "type": "Seeded:/typeSystems/PLATFORM/dataTypes/VARCHAR",
+            "configValues": {
+                "configParamValues": {
+                    "length": {
+                        "intValue": 255
+                    },
+                    "usedInParam": {
+                        "stringValue": "Execute API Config: (Request Payload)"
+                    }
+                }
+            },
+            "description": "",
+            "defaultValue": " ",
+            "isInput": true,
+            "isOutput": false,
             "name": "ARCHIVE_URI",
             "typeName": "VARCHAR"
         }
@@ -327,22 +346,21 @@
             "successCondition": {
                 "refValue": {
                     "modelType": "EXPRESSION",
-                    "key": "ade38dcc-9855-4d91-83cb-2e4e2dbedf3b",
+                    "key": "7179a011-6fa6-4957-abe8-a565fc197ad9",
                     "exprString": "SYS.RESPONSE_STATUS >= 200 AND SYS.RESPONSE_STATUS <= 300 AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.lifecycleState') AS String) == 'SUCCEEDED'",
                     "configValues": {
                         "parentRef": {
-                            "parent": "ade38dcc-9855-4d91-83cb-2e4e2dbedf3b"
+                            "parent": "7179a011-6fa6-4957-abe8-a565fc197ad9"
                         }
                     }
                 }
             }
-        },
-        "parentRef": {}
+        }
     },
     "isConcurrentAllowed": true,
     "executeRestCallConfig": {
         "modelType": "REST_CALL_CONFIG",
-        "key": "fc80f86d-c545-46b2-94fd-423a1c7718f9",
+        "key": "ecf947c8-6e81-4b3d-9def-d43053bcab8f",
         "methodType": "POST",
         "requestHeaders": {
             "Content-Type": "application/json"
@@ -356,13 +374,13 @@
                     "refValue": {
                         "modelType": "JSON_TEXT",
                         "parentRef": {
-                            "parent": "fc80f86d-c545-46b2-94fd-423a1c7718f9"
+                            "parent": "ecf947c8-6e81-4b3d-9def-d43053bcab8f"
                         },
                         "encoded": false,
                         "configValues": {
                             "configParamValues": {
                                 "dataParam": {
-                                    "stringValue": "{\n \"compartmentId\": \"${COMPARTMENT_ID}\",\n \"displayName\": \"${DISPLAY_NAME}\",\n \"sparkVersion\": \"${SPARK_VERSION}\",\n \"driverShape\": \"${DRIVER_SHAPE}\",\n \"executorShape\": \"${EXECUTOR_SHAPE}\",\n \"numExecutors\": ${NUM_EXECUTORS},\n \"execute\": \"${EXECUTE_CMD}\",\n \"maxDurationInMinutes\":-1,\n \"configuration\":{${CONFIGURATION}},\n \"arguments\":[${ARGUMENTS}],\n \"parameters\":[${PARAMETERS}],\n \"archiveUri\":\"${ARCHIVE_URI}\",\n \"type\":\"${JOB_TYPE}\",\n \"logsBucketUri\": \"${LOGS_BUCKET_URI}\",\n \"privateEndpointId\":\"${PRIVATE_ENDPOINT_ID}\",\n \"warehouseBucketUri\":\"${WAREHOUSE_BUCKET_URI}\",\n \"poolId\": \"\",\n \"freeformTags\":{},\n \"definedTags\":{}\n}\n"
+                                    "stringValue": "{\n \"compartmentId\": \"${COMPARTMENT_ID}\",\n \"displayName\": \"${DISPLAY_NAME}\",\n \"sparkVersion\": \"${SPARK_VERSION}\",\n \"driverShape\": \"${DRIVER_SHAPE}\",\n \"executorShape\": \"${EXECUTOR_SHAPE}\",\n \"numExecutors\": ${NUM_EXECUTORS},\n \"execute\": \"${EXECUTE_CMD}\",\n \"maxDurationInMinutes\":-1,\n \"configuration\":{${CONFIGURATION}},\n \"poolId\":\"${POOL_ID}\",\n \"arguments\":[${ARGUMENTS}],\n \"parameters\":[${PARAMETERS}],\n \"archiveUri\":\"${ARCHIVE_URI}\",\n \"type\":\"${JOB_TYPE}\",\n \"logsBucketUri\": \"${LOGS_BUCKET_URI}\",\n \"privateEndpointId\":\"${PRIVATE_ENDPOINT_ID}\",\n \"warehouseBucketUri\":\"${WAREHOUSE_BUCKET_URI}\",\n \"freeformTags\":{},\n \"definedTags\":{}\n}\n"
                                 }
                             }
                         }
@@ -374,6 +392,7 @@
     "cancelRestCallConfig": {
         "modelType": "REST_CALL_CONFIG",
         "methodType": "DELETE",
+        "requestHeaders": {},
         "configValues": {
             "configParamValues": {
                 "requestURL": {
@@ -384,7 +403,7 @@
     },
     "pollRestCallConfig": {
         "modelType": "POLL_REST_CALL_CONFIG",
-        "key": "730c219c-5ec9-47b7-9993-a369ba785069",
+        "key": "a52d37fc-8886-4507-b929-aa0063379afc",
         "methodType": "GET",
         "requestHeaders": {},
         "configValues": {
@@ -408,7 +427,7 @@
                     "refValue": {
                         "modelType": "EXPRESSION",
                         "parentRef": {
-                            "parent": "730c219c-5ec9-47b7-9993-a369ba785069"
+                            "parent": "a52d37fc-8886-4507-b929-aa0063379afc"
                         },
                         "exprString": "CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.lifecycleState') AS String) != 'SUCCEEDED' AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.lifecycleState') AS String) != 'FAILED'",
                         "configValues": {
