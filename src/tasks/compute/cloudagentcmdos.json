@@ -264,6 +264,6 @@
     "resourcePrincipalSource": "WORKSPACE"
   },
   "registryMetadata": {
-    "aggregatorKey": "${PROJECT_KEY}",
+    "aggregatorKey": "{{PROJECT_KEY}}"
   }
 }
