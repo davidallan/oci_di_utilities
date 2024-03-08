@@ -234,26 +234,6 @@
                     }
                 }
             },
-            "description": "The arguments passed to the running application as command line arguments. Pass as quoted, comma separated values.",
-            "defaultValue": " ",
-            "isInput": true,
-            "isOutput": false,
-            "name": "ARGUMENTS",
-            "typeName": "VARCHAR"
-        },
-        {
-            "modelType": "PARAMETER",
-            "type": "Seeded:/typeSystems/PLATFORM/dataTypes/VARCHAR",
-            "configValues": {
-                "configParamValues": {
-                    "length": {
-                        "intValue": 4000
-                    },
-                    "usedInParam": {
-                        "stringValue": "Execute API Config: (Request Payload)"
-                    }
-                }
-            },
             "description": "An Oracle Cloud Infrastructure URI of the bucket to be used as default warehouse directory for BATCH SQL runs.",
             "defaultValue": " ",
             "isInput": true,
@@ -362,7 +342,7 @@
                         "configValues": {
                             "configParamValues": {
                                 "dataParam": {
-                                    "stringValue": "{\n \"compartmentId\": \"${COMPARTMENT_ID}\",\n \"displayName\": \"${DISPLAY_NAME}\",\n \"sparkVersion\": \"${SPARK_VERSION}\",\n \"driverShape\": \"${DRIVER_SHAPE}\",\n \"executorShape\": \"${EXECUTOR_SHAPE}\",\n \"numExecutors\": ${NUM_EXECUTORS},\n \"execute\": \"${EXECUTE_CMD}\",\n \"maxDurationInMinutes\":-1,\n \"configuration\":{${CONFIGURATION}},\n \"arguments\":[${ARGUMENTS}],\n \"parameters\":[${PARAMETERS}],\n \"archiveUri\":\"${ARCHIVE_URI}\",\n \"type\":\"${JOB_TYPE}\",\n \"logsBucketUri\": \"${LOGS_BUCKET_URI}\",\n \"privateEndpointId\":\"${PRIVATE_ENDPOINT_ID}\",\n \"warehouseBucketUri\":\"${WAREHOUSE_BUCKET_URI}\",\n \"poolId\": \"\",\n \"freeformTags\":{},\n \"definedTags\":{}\n}\n"
+                                    "stringValue": "{\n \"compartmentId\": \"${COMPARTMENT_ID}\",\n \"displayName\": \"${DISPLAY_NAME}\",\n \"sparkVersion\": \"${SPARK_VERSION}\",\n \"driverShape\": \"${DRIVER_SHAPE}\",\n \"executorShape\": \"${EXECUTOR_SHAPE}\",\n \"numExecutors\": ${NUM_EXECUTORS},\n \"execute\": \"${EXECUTE_CMD}\",\n \"maxDurationInMinutes\":-1,\n \"configuration\":{${CONFIGURATION}},\n \"parameters\":[${PARAMETERS}],\n \"archiveUri\":\"${ARCHIVE_URI}\",\n \"type\":\"${JOB_TYPE}\",\n \"logsBucketUri\": \"${LOGS_BUCKET_URI}\",\n \"privateEndpointId\":\"${PRIVATE_ENDPOINT_ID}\",\n \"warehouseBucketUri\":\"${WAREHOUSE_BUCKET_URI}\",\n \"poolId\": \"\",\n \"freeformTags\":{},\n \"definedTags\":{}\n}\n"
                                 }
                             }
                         }
