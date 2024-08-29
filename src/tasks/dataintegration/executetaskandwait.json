@@ -65,9 +65,8 @@
                         }
                     }
                 }
-            },
-            "parentRef": {}
-        },
+            }
+        }
     },
     "cancelRestCallConfig": {
         "modelType": "REST_CALL_CONFIG",
