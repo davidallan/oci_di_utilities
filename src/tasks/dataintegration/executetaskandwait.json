@@ -1,7 +1,7 @@
 {
     "modelType": "REST_TASK",
     "name": "Execute Task and Wait",
-    "description": "Get a task using its name and type from the current application and workspace. The task must be in the same application that this task is deployed into (since the system parameter application key is used). ",
+    "description": "Execute a task using its task key from the current application and workspace and poll for it to be in SUCCESS, ERROR or TERMINATED states. The task must be in the same application that this task is deployed into (since the system parameter application key is used). ",
     "identifier": "EXECUTE_TASK_AND_WAIT",
     "parameters": [
         {
@@ -30,7 +30,7 @@
             "successCondition": {
                 "refValue": {
                     "modelType": "EXPRESSION",
-                    "exprString": "SYS.RESPONSE_STATUS >= 200 AND SYS.RESPONSE_STATUS < 300 AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'SUCCESS'"
+                    "exprString": "SYS.RESPONSE_STATUS >= 200 AND SYS.RESPONSE_STATUS < 300 AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) == 'SUCCESS'"
                 }
             }
         }

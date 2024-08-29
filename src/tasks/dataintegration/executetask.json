@@ -1,7 +1,7 @@
 {
     "modelType": "REST_TASK",
     "name": "Execute Task",
-    "description": "Get a task using its name and type from the current application and workspace. The task must be in the same application that this task is deployed into (since the system parameter application key is used). ",
+    "description": "Execute a task using its task key from the current application and workspace. This is a fire and forget task. The task must be in the same application that this task is deployed into (since the system parameter application key is used). ",
     "identifier": "EXECUTE_TASK",
     "parameters": [
         {
