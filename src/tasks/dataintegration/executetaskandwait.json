@@ -1,28 +1,28 @@
 {
     "modelType": "REST_TASK",
     "name": "Execute Task and Wait",
-    "description": "Execute a task using its task key from the current application and workspace and poll for it to be in SUCCESS, ERROR or TERMINATED states. The task must be in the same application that this task is deployed into (since the system parameter application key is used). ",
+    "description": "Get a task using its name and type from the current application and workspace. The task must be in the same application that this task is deployed into (since the system parameter application key is used). ",
     "identifier": "EXECUTE_TASK_AND_WAIT",
     "parameters": [
         {
             "modelType": "PARAMETER",
-            "type": "Seeded:/typeSystems/PLATFORM/dataTypes/STRING",
+            "type": "Seeded:/typeSystems/PLATFORM/dataTypes/VARCHAR",
             "configValues": {
                 "configParamValues": {
                     "length": {
                         "intValue": 255
                     },
                     "usedInParam": {
-                        "stringValue": "Execute API Config: (Request URL), Execute API Config: (Request URL)"
+                        "stringValue": "Execute API Config: (Request Payload), Execute API Config: (Request Payload), Execute API Config: (Request Payload)"
                     }
                 }
             },
             "description": "",
-            "defaultValue": "https://abc",
+            "defaultValue": "taskKey",
             "isInput": true,
             "isOutput": false,
-            "name": "URL",
-            "typeName": "STRING"
+            "name": "TASK_KEY",
+            "typeName": "VARCHAR"
         }
     ],
     "opConfigValues": {
@@ -78,7 +78,7 @@
         "configValues": {
             "configParamValues": {
                 "pollMaxDuration": {
-                    "objectValue": 1200
+                    "objectValue": 120
                 },
                 "pollMaxDurationUnit": {
                     "stringValue": "SECONDS"
@@ -92,7 +92,16 @@
                 "pollCondition": {
                     "refValue": {
                         "modelType": "EXPRESSION",
-                        "exprString": "CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'SUCCESS' AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'ERROR' AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'TERMINATED'"
+                        "key": "88fb64ca-9dfe-45f3-82ea-55efb83ed51f",
+                        "parentRef": {
+                            "parent": "9497e5b6-b863-4a34-8dea-410baf92ae62"
+                        },
+                        "exprString": "CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'SUCCESS' AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'ERROR' AND CAST(json_path(SYS.RESPONSE_PAYLOAD, '$.status') AS String) != 'TERMINATED'",
+                        "configValues": {
+                            "parentRef": {
+                                "parent": "88fb64ca-9dfe-45f3-82ea-55efb83ed51f"
+                            }
+                        }
                     }
                 },
                 "requestURL": {
