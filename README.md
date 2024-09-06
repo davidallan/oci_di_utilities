@@ -1,7 +1,7 @@
 # OCI Data Integration Common Tasks
 
 ## Prerequisites
-You should have an OCI Data Integration workspace created and also a project within the workspace. You will need these to create the tasks.
+You should have an OCI Data Integration workspace created and also a project within the workspace. You will need these to create the tasks below.
 
 ## Setup
 Define the following environment variables and then execute the script to create the tasks in OCI DI.  Get the project key and the workspace and the region and set;
